@@ -1,25 +1,29 @@
 class Solution {
     public boolean isValid(String s) {
         // ______________________ m2
-        if ((s.length() & 1) == 1) return false;
+        char[] str = s.toCharArray();
+        if ((str.length & 1) == 1) return false;
 
-        Deque<Character> dq = new ArrayDeque<>();
+        int slow = 0;
 
-        for (char c : s.toCharArray()) {
-            if (c == '(' || c == '{' || c == '[') {
-                dq.push(c);
+        for (int fast = 0; fast < str.length; fast++) {
+            char c = str[fast];
+
+            if (c == '(' || c == '[' || c == '{') {
+                str[slow++] = c;
             } else {
-                if (dq.isEmpty()) return false;
-                char top = dq.pop();
-                if ((c == ')' && top != '(') ||
-                    (c == '}' && top != '{') ||
-                    (c == ']' && top != '[')) {
+                if (slow == 0) return false;
+                char left = str[--slow];
+
+                if ((left == '(' && c != ')') ||
+                    (left == '[' && c != ']') ||
+                    (left == '{' && c != '}')) {
                     return false;
                 }
             }
         }
 
-        return dq.isEmpty();
+        return slow == 0;
 
 
         // ______________________ m1
