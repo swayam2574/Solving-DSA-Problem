@@ -5,6 +5,8 @@ class Solution {
         char[] a = new char[l];
         int top = -1;  
 
+        if(l == 1 || l%2 != 0) return false;
+
         for (int i=0; i<l; i++) {
             char c = s.charAt(i);
 
