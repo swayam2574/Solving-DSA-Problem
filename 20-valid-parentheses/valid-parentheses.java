@@ -1,51 +1,29 @@
 class Solution {
     public boolean isValid(String s) {
         // ______________________ m2
-        // int l = s.length();
-        // char[] a = new char[l];
-        // int top = -1;  
+        int l = s.length();
+        char[] a = new char[l];
+        int top = -1;  
 
-        // if(l == 1 || l%2 != 0) return false;
+        if(l == 1 || l%2 != 0) return false;
 
-        // for (int i=0; i<l; i++) {
-        //     char c = s.charAt(i);
+        for (int i=0; i<l; i++) {
+            char c = s.charAt(i);
 
-        //     if (c == '(' || c == '{' || c == '[') a[++top] = c;
-        //     else { 
-        //         if (top == -1) return false;
+            if (c == '(' || c == '{' || c == '[') a[++top] = c;
+            else { 
+                if (top == -1) return false;
 
-        //         char open = a[top--]; 
+                char open = a[top--]; 
 
-        //         if ((c == ')' && open != '(') ||
-        //             (c == '}' && open != '{') ||
-        //             (c == ']' && open != '[')) {
-        //             return false;
-        //         }
-        //     }
-        // }
-        // return top == -1;
-
-        Stack<Character> stack = new Stack<>();
-        for (char ch : s.toCharArray()) {
-            if (ch == '(' || ch == '[' || ch == '{') {
-                stack.push(ch);
-            } else {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                char top = stack.pop();
-                if (ch == ')' && top != '(') {
-                    return false;
-                }
-                if (ch == ']' && top != '[') {
-                    return false;
-                }
-                if (ch == '}' && top != '{') {
+                if ((c == ')' && open != '(') ||
+                    (c == '}' && open != '{') ||
+                    (c == ']' && open != '[')) {
                     return false;
                 }
             }
         }
-        return stack.isEmpty();
+        return top == -1;
 
 
         // ______________________ m1
