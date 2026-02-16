@@ -26,8 +26,8 @@ class Solution {
                 st.push(ch);
             } else {
                 if(st.isEmpty()) return false;
-                char top = st.pop();
-                if ((ch == ')' && top == '(') || (ch == '}' && top == '{') || (ch == ']' && top == '[')) continue;
+                char top = st.peek();
+                if ((ch == ')' && top == '(') || (ch == '}' && top == '{') || (ch == ']' && top == '[')) st.pop();
                 else return false;
             }
         }
