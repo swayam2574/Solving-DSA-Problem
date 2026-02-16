@@ -9,6 +9,11 @@ class Solution {
             }
         }
 
+        // alternate way to count
+        // StringBuilder s = new StringBuilder();
+        // for(int i: nums) s.append(i);
+        // int c = s.length();
+
         int[] a = new int[c];
         for(int i=nums.length-1; i>=0; i--){
             int t = nums[i];
