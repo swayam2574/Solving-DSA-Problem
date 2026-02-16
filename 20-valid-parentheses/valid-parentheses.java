@@ -1,29 +1,27 @@
 class Solution {
     public boolean isValid(String s) {
         // ______________________ m2
-        char[] str = s.toCharArray();
-        if ((str.length & 1) == 1) return false;
+        int l = s.length();
+        char[] a = new char[l];
+        int top = -1;  
 
-        int slow = 0;
+        for (int i=0; i<l; i++) {
+            char c = s.charAt(i);
 
-        for (int fast = 0; fast < str.length; fast++) {
-            char c = str[fast];
+            if (c == '(' || c == '{' || c == '[') a[++top] = c;
+            else { 
+                if (top == -1) return false;
 
-            if (c == '(' || c == '[' || c == '{') {
-                str[slow++] = c;
-            } else {
-                if (slow == 0) return false;
-                char left = str[--slow];
+                char open = a[top--]; 
 
-                if ((left == '(' && c != ')') ||
-                    (left == '[' && c != ']') ||
-                    (left == '{' && c != '}')) {
+                if ((c == ')' && open != '(') ||
+                    (c == '}' && open != '{') ||
+                    (c == ']' && open != '[')) {
                     return false;
                 }
             }
         }
-
-        return slow == 0;
+        return top == -1;
 
 
         // ______________________ m1
@@ -34,9 +32,8 @@ class Solution {
         //     } else {
         //         if(st.isEmpty()) return false;
         //         char top = st.peek();
-        //         if ((ch == ')' && top == '(') || (ch == '}' && top == '{') || (ch == ']' && top == '[')) {
-        //             st.pop();
-        //         } else return false;
+        //         if ((ch == ')' && top == '(') || (ch == '}' && top == '{') || (ch == ']' && top == '[')) st.pop();
+        //         else return false;
         //     }
         // }
         // return st.isEmpty();
