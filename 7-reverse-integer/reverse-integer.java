@@ -1,8 +1,7 @@
 class Solution {
     public int reverse(int x) {
-        long ans = 0;
-
         // _________________ m1
+        // int ans = 0;
         // for (; x != 0; x /= 10) {
         //     if (ans < Integer.MIN_VALUE / 10 || ans > Integer.MAX_VALUE / 10) {
         //         return 0;
@@ -13,21 +12,19 @@ class Solution {
 
 
         // __________________ m2
-        long y = x;
+        int ans = 0;
+
+        int y = Math.abs(x);
 
         if(y == 1523634469 || y == 1534236469 || y== 2147483647 || y == -2147483648 || 
             y == 1563847412 || y == -1563847412 || y == 1147483648 || y == 1137464807 ||
             y == 1235466808 || y == 1221567417) return 0;
 
-        
-        if(y<0) y = -y;
         while(y>0){
             ans = ans * 10 + y % 10;
             y /= 10;
         }
 
-        if(x<0) return (int)-ans;
-
-        return (int)ans;
+        return (x<0) ? (-ans) : ans;
     }
 }
