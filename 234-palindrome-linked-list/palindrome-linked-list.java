@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    static int[] mirror = new int[100000];
+    // static int[] mirror = new int[100000];
     public boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) return true;
 
@@ -55,6 +55,7 @@ class Solution {
 
 
         // ___________________________
+        int[] mirror = new int[100000];
         int i = 0;
         ListNode pre = head;
         while(pre != null){
