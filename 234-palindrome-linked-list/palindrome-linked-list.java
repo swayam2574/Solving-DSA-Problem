@@ -14,10 +14,10 @@ class Solution {
         // ___________________________
         if (head == null || head.next == null) return true;
         int i = 0;
-        ListNode pre = head;
-        while(pre != null){
-            mirror[i++] = pre.val;
-            pre = pre.next;
+        ListNode temp = head;
+        while(temp != null){
+            mirror[i++] = temp.val;
+            temp = temp.next;
         }
         
         int l = 0;
