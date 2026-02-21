@@ -21,7 +21,7 @@ class Solution {
         }
         
         int l = 0;
-         while (i > 0) {
+        while (i > 0) {
             if (mirror[l++] != mirror[--i])
                 return false;
         }
