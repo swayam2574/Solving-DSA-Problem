@@ -18,43 +18,19 @@ class Node {
 */
 
 class Solution {
-int index = 0;
-
     public List<Integer> preorder(Node root) {
-        int size = countNodes(root);
-        int[] arr = new int[size];
-
-        fillPreorder(root, arr);
-
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            result.add(arr[i]);
-        }
-
+        traverse(root, result);
         return result;
     }
 
-    private int countNodes(Node node) {
-        if (node == null) return 0;
-
-        int count = 1;
-        if (node.children != null) {
-            for (Node child : node.children) {
-                count += countNodes(child);
-            }
-        }
-        return count;
-    }
-
-    private void fillPreorder(Node node, int[] arr) {
+    private void traverse(Node node, List<Integer> result) {
         if (node == null) return;
 
-        arr[index++] = node.val;
+        result.add(node.val);
 
-        if (node.children != null) {
-            for (Node child : node.children) {
-                fillPreorder(child, arr);
-            }
+        for (Node child : node.children) {
+            traverse(child, result);
         }
     }
 }
