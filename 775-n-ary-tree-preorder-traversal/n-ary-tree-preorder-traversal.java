@@ -29,8 +29,6 @@ class Solution {
 
         result.add(node.val);
 
-        for (Node child : node.children) {
-            traverse(child, result);
-        }
+        for (Node child : node.children) traverse(child, result);
     }
 }
