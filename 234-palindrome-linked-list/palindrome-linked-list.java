@@ -9,21 +9,33 @@
  * }
  */
 class Solution {
-    static int[] arr = new int[100000];
+    // static int[] arr = new int[100000];
     public boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) return true;
-        int i = 0;
+
+        int n = 0;
         ListNode temp = head;
-        while(temp != null){
+
+        while (temp != null) {
+            n++;
+            temp = temp.next;
+        }
+
+        int[] arr = new int[n];
+        temp = head;
+        int i = 0;
+
+        while (temp != null) {
             arr[i++] = temp.val;
             temp = temp.next;
         }
-        
-        int l = 0;
-        while (l < i) {
-            if (arr[l++] != arr[--i])
-                return false;
+
+        int l = 0, r = n - 1;
+
+        while (l < r) {
+            if (arr[l++] != arr[r--]) return false;
         }
+
         return true;
 
         // ____________________________ m2
