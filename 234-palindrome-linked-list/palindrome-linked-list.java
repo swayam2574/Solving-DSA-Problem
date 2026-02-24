@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    // static int[] arr = new int[100000];
+    static int[] arr = new int[100000];
     public boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) return true;
 
@@ -21,7 +21,7 @@ class Solution {
             temp = temp.next;
         }
 
-        int[] arr = new int[n];
+        // int[] arr = new int[n];
         temp = head;
         int i = 0;
 
