@@ -9,26 +9,41 @@
  * }
  */
 class Solution {
-    static int[] mirror = new int[100000];
+    static int[] arr = new int[100000];
     public boolean isPalindrome(ListNode head) {
-        // ___________________________
         if (head == null || head.next == null) return true;
         int i = 0;
         ListNode temp = head;
         while(temp != null){
-            mirror[i++] = temp.val;
+            arr[i++] = temp.val;
             temp = temp.next;
         }
         
         int l = 0;
         while (l < i) {
-            if (mirror[l++] != mirror[--i])
+            if (arr[l++] != arr[--i])
                 return false;
         }
         return true;
 
+        // ____________________________ m2
+        // if (head == null || head.next == null) return true;
+        // List<Integer> list = new ArrayList();
+        // ListNode temp = head;
+        // while(temp != null){
+        //     list.add(temp.val);
+        //     temp= temp.next;
+        // }
+        // int l=0, r=list.size()-1;
+        // while(l<r){
+        //     if(list.get(l++)!=list.get(r--)) return false;
+        // }
+        // return true;
 
-        // ___________________________
+
+
+
+        // ___________________________ m1
         // if (head == null || head.next == null) return true;
         // ListNode slow = head;
         // ListNode fast = head;
@@ -55,20 +70,6 @@ class Solution {
         //     second = second.next;
         // }
 
-        // return true;
-
-        // ____________________________
-        // if (head == null || head.next == null) return true;
-        // List<Integer> list = new ArrayList();
-        // ListNode temp = head;
-        // while(temp != null){
-        //     list.add(temp.val);
-        //     temp= temp.next;
-        // }
-        // int l=0, r=list.size()-1;
-        // while(l<r){
-        //     if(list.get(l++)!=list.get(r--)) return false;
-        // }
         // return true;
 
 
