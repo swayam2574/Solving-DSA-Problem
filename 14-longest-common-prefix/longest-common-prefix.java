@@ -2,40 +2,39 @@ class Solution {
     public String longestCommonPrefix(String[] strs) {
 
         // ________________________ method 1
-        // if (strs == null || strs.length == 0) return "";
+        if (strs == null || strs.length == 0) return "";
 
-        // Arrays.sort(strs);
-        // StringBuilder sb = new StringBuilder();
+        Arrays.sort(strs);
+        StringBuilder sb = new StringBuilder();
 
-        // char[] f = strs[0].toCharArray();
-        // char[] l = strs[strs.length-1].toCharArray();
+        String f = strs[0];
+        String l = strs[strs.length-1];
 
-        // for(int i=0; i<f.length; i++){
-        //     if(f[i]!=l[i]){
-        //         break; 
-        //     } 
-        //     sb.append(f[i]);
-        // }
+        int fl = f.length();
+        for(int i=0; i<fl; i++){
+            if(f.charAt(i)!=l.charAt(i)) break; 
+            sb.append(f.charAt(i));
+        }
 
-        // return sb.toString();
+        return sb.toString();
 
 
 
 
 
         // ________________________ method 2
-        if (strs == null || strs.length == 0) return "";
+        // if (strs == null || strs.length == 0) return "";
 
-        String prefix = strs[0];
+        // String prefix = strs[0];
 
-        for (int i = 1; i < strs.length; i++) {
-            while (strs[i].indexOf(prefix) != 0) {
-                prefix = prefix.substring(0, prefix.length() - 1);
-                if (prefix.isEmpty()) return "";
-            }
-        }
+        // for (int i = 1; i < strs.length; i++) {
+        //     while (strs[i].indexOf(prefix) != 0) {
+        //         prefix = prefix.substring(0, prefix.length() - 1);
+        //         if (prefix.isEmpty()) return "";
+        //     }
+        // }
 
-        return prefix;
+        // return prefix;
 
     }
 }
