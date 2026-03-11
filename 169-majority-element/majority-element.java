@@ -1,5 +1,6 @@
 class Solution {
     public int majorityElement(int[] nums) {
+        // __________________________ m2
         // int n = nums.length;
         // Map<Integer, Integer> map = new HashMap<>();
 
@@ -11,7 +12,7 @@ class Solution {
         // return -1;
 
 
-        // method.......................2
+        // _________________________ m1
         int n = nums.length;
         int me = nums[0], cnt = 1;
         for(int i=1; i<n; i++){
