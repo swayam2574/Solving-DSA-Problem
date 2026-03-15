@@ -1,37 +1,38 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        s = strToCharTS(s);
-        int l=0; 
-        int r=s.length()-1;
+        // _________________________ m1
+        // s = strToCharTS(s);
+        // int l=0; 
+        // int r=s.length()-1;
 
-        if(s.length()==0) return true; 
+        // if(s.length()==0) return true; 
 
+        // while(l<r){
+        //     if(s.charAt(l)!=s.charAt(r)) return false;
+        //     l++;
+        //     r--;
+        // }
+        // return true;
+
+        // _________________________ m2 
+        int l=0, r=s.length()-1;
         while(l<r){
-            if(s.charAt(l)!=s.charAt(r)) return false;
+            char lc = s.charAt(l);
+            char rc = s.charAt(r);
+
+            if(!Character.isLetterOrDigit(lc)) {l++; continue;}
+            if(!Character.isLetterOrDigit(rc)) {r--; continue;}
+
+            if(Character.toLowerCase(lc) != Character.toLowerCase(rc)) return false; 
+
             l++;
             r--;
         }
         return true;
 
 
-        // int l=0, r=s.length()-1;
-        // while(l<r){
-        //     char lc = s.charAt(l);
-        //     char rc = s.charAt(r);
 
-        //     if(!Character.isLetterOrDigit(lc)) {l++; continue;}
-        //     if(!Character.isLetterOrDigit(rc)) {r--; continue;}
-
-        //     if(Character.toLowerCase(lc) != Character.toLowerCase(rc)) return false; 
-
-        //     l++;
-        //     r--;
-        // }
-        // return true;
-
-
-
-
+        // _________________________ m3
         // int left = 0, right = s.length() - 1;
 
         // while (left < right) {
